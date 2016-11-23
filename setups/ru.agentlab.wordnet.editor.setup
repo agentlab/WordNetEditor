@@ -105,6 +105,6 @@
   <stream name="master"/>
   <logicalProjectContainer
       xsi:type="setup:Project"
-      href="index:/org.eclipse.setup#//@projectCatalogs[name='ru.agentlab']/@projects[name='osgi.fx']"/>
+      href="index:/org.eclipse.setup#//@projectCatalogs[name='ru.agentlab']/@projects[name='osgi']/@projects[name='e4']/@projects[name='fx']"/>
   <description>IDE Setup for WordNetEditor Project</description>
 </setup:Project>
