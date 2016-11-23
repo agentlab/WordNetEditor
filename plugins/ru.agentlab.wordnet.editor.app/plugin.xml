@@ -2,10 +2,10 @@
 <?eclipse version="3.0"?>
 <plugin>
 <extension id="product" point="org.eclipse.core.runtime.products">
-	<product name="ru.agentlab.calendar.product" application="org.eclipse.fx.ui.workbench.fx.application" >
-		<property name="appName" value="ru.agentlab.calendar.product" />
+	<product name="ru.agentlab.wordnet.editor.product" application="org.eclipse.fx.ui.workbench.fx.application" >
+		<property name="appName" value="ru.agentlab.wordnet.editor.product" />
 		
-		<property name="applicationXMI" value="ru.agentlab.calendar.app/Application.e4xmi" />
+		<property name="applicationXMI" value="ru.agentlab.wordnet.editor.app/Application.e4xmi" />
 		
 		<property name="cssTheme" value="theme.default" />
 		

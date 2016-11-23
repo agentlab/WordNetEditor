@@ -13,7 +13,7 @@
 	</parent>
 	
 	<modules>
-		<module>ru.agentlab.wordnet.editor</module>
+		<module>ru.agentlab.wordnet.editor.app</module>
 	</modules>
 	
 	<build>

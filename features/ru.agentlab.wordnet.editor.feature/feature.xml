@@ -35,7 +35,6 @@
       <import plugin="org.eclipse.e4.ui.workbench"/>
       <import plugin="org.eclipse.e4.ui.services"/>
       <import plugin="org.eclipse.fx.ui.services"/>
-	  <import plugin="org.eclipse.fx.javafx"/>
       <import plugin="org.eclipse.fx.core.di" version="2.4.0" match="greaterOrEqual"/>
       <import plugin="com.google.guava"/>
       <import plugin="javax.annotation"/>
