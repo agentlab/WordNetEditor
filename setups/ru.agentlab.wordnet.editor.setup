@@ -85,7 +85,10 @@
           rootFolder="${ru.agentlab.wordnet.editor.git.clone.location}"
           locateNestedProjects="true"/>
       <repositoryList
-          name="Neon"/>
+          name="Neon">
+        <repository
+            url="http://localhost:7070"/>
+      </repositoryList>
     </targlet>
   </setupTask>
   <setupTask
