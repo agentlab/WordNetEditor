@@ -67,9 +67,25 @@
       </annotation>
       <requirement
           name="*"/>
+      <requirement
+          name="net.sf.exjwnl.feature.feature.group"/>
+      <requirement
+          name="net.sf.exjwnl.feature.feature.jar"/>
+      <requirement
+          name="net.sf.exjwnl.feature.source.feature.group"/>
+      <requirement
+          name="net.sf.exjwnl.feature.source.feature.jar"/>
+      <requirement
+          name="net.sf.exjwnl.sdk.feature.feature.group"/>
+      <requirement
+          name="net.sf.exjwnl.sdk.feature.source.feature.group"/>
+      <requirement
+          name="net.sf.exjwnl.sdk.feature.source.feature.jar"/>
       <sourceLocator
           rootFolder="${ru.agentlab.wordnet.editor.git.clone.location}"
           locateNestedProjects="true"/>
+      <repositoryList
+          name="Neon"/>
     </targlet>
   </setupTask>
   <setupTask
