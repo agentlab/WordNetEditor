@@ -1,5 +1,8 @@
 package ru.agentlab.wordnet.editor.app.ui;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 
 import javafx.event.EventHandler;
@@ -10,8 +13,15 @@ import javafx.scene.control.TreeView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import net.sf.extjwnl.JWNLException;
+import net.sf.extjwnl.dictionary.Dictionary;
+import net.sf.extjwnl.service.IExtjwnlService;
+import net.sf.extjwnl.utilities.Examples;
 
 public class DictionaryPart {
+
+    private IExtjwnlService extjwnlService;
+    private List<Dictionary> dictionary = new LinkedList<>();
 
     public DictionaryPart() {
     }
@@ -50,6 +60,38 @@ public class DictionaryPart {
 
             WordPart wordsChange = WordPart.getWp();
             wordsChange.initializeTree(name);
+        }
+    }
+
+    public synchronized void setDictionary(IExtjwnlService service) {
+        System.err.println("Service was set. Thank you DS!");
+
+        this.extjwnlService = service;
+        this.dictionary = this.extjwnlService.getDictionary();
+
+        if (null != dictionary)
+        {
+            try
+            {
+                new Examples(this.dictionary.get(0)).go();
+            }
+            catch (JWNLException | CloneNotSupportedException e)
+            {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Method will be used by DS to unset the quote service
+    public synchronized void unsetDictionary(IExtjwnlService service) {
+        if (this.dictionary != null)
+        {
+            this.dictionary = null;
+        }
+        if (this.extjwnlService == service)
+        {
+            this.extjwnlService = null;
         }
     }
 }
