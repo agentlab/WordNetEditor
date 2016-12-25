@@ -8,20 +8,36 @@ import javafx.scene.layout.BorderPane;
 
 public class WordPart {
 
-    public WordPart() {
+	private static WordPart wp;
+
+	public static WordPart getWp() {
+		return wp;
 	}
+
+	TreeItem<String> root;
+
+    public WordPart() {
+		wp = this;
+	}
+
+	private TreeView<String> treeView = new TreeView<>();
 
 	@PostConstruct
 	void initUI(BorderPane pane) {
 		try {
-			TreeItem<String> root = new TreeItem<>("Word 1");
-			root.setExpanded(true);
-			root.getChildren().addAll(new TreeItem<>("SynWord 1"), new TreeItem<>("SynWord 2"), new TreeItem<>("SynWord 3"));
-			TreeView<String> treeView = new TreeView<>(root);
-
+			initializeTree("Word 1");
 			pane.setCenter(treeView);
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	void initializeTree(String word) {
+		TreeItem<String> root = new TreeItem<>(word);
+		root.setExpanded(true);
+		root.getChildren().addAll(new TreeItem<>("SynWord 1"), new TreeItem<>("SynWord 2"), new TreeItem<>("SynWord 3"));
+
+		treeView.setRoot(root);
 	}
 }
