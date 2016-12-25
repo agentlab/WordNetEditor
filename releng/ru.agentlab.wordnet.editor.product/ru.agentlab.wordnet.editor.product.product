@@ -29,10 +29,16 @@
 
    <plugins>
       <plugin id="com.google.guava"/>
+      <plugin id="com.googlecode.concurrentlinkedhashmap.lru"/>
       <plugin id="com.ibm.icu"/>
       <plugin id="javax.annotation.jre"/>
       <plugin id="javax.inject"/>
       <plugin id="javax.xml.jre"/>
+      <plugin id="net.sf.extjwnl"/>
+      <plugin id="net.sf.extjwnl.component"/>
+      <plugin id="net.sf.extjwnl.data.wn31"/>
+      <plugin id="net.sf.extjwnl.service"/>
+      <plugin id="net.sf.extjwnl.utilities"/>
       <plugin id="org.apache.commons.jxpath"/>
       <plugin id="org.apache.commons.lang"/>
       <plugin id="org.apache.commons.logging"/>
@@ -100,6 +106,9 @@
       <plugin id="org.eclipse.osgi"/>
       <plugin id="org.eclipse.osgi.compatibility.state" fragment="true"/>
       <plugin id="org.eclipse.osgi.services"/>
+      <plugin id="org.hamcrest.core"/>
+      <plugin id="org.junit"/>
+      <plugin id="org.slf4j.api"/>
       <plugin id="ru.agentlab.wordnet.editor.app"/>
    </plugins>
 
