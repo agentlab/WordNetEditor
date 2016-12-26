@@ -36,7 +36,7 @@ public class DictionaryPart {
     void initUI(BorderPane pane) {
         try
         {
-            TreeItem<String> root = new TreeItem<>("Verbs");
+            TreeItem<String> root = new TreeItem<>("VERB");
             root.setExpanded(true);
             treeView = new TreeView<>(root);
 
@@ -80,8 +80,13 @@ public class DictionaryPart {
             {
                 IndexWord word = dictionary.get(0).getIndexWord(POS.VERB, name);
                 PointerTargetNodeList hyponyms = PointerUtils.getDirectHyponyms(word.getSenses().get(0));
+                PointerTargetNodeList hypernyms = PointerUtils.getDirectHypernyms(word.getSenses().get(0));
+                PointerTargetNodeList synonyms = PointerUtils.getSynonyms(word.getSenses().get(0));
+                PointerTargetNodeList antonyms = PointerUtils.getAntonyms(word.getSenses().get(0));
+                PointerTargetNodeList holonyms = PointerUtils.getHolonyms(word.getSenses().get(0));
+                PointerTargetNodeList CoordinateTerms = PointerUtils.getCoordinateTerms(word.getSenses().get(0));
                 WordPart wordsChange = WordPart.getWp();
-                wordsChange.initializeTree(name, hyponyms);
+                wordsChange.initializeTree(name, hypernyms, hyponyms, synonyms, antonyms, holonyms, CoordinateTerms);
             }
             catch (JWNLException e)
             {
