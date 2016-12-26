@@ -1,6 +1,6 @@
 package ru.agentlab.wordnet.editor.app.ui;
 
-import java.util.LinkedList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,6 +14,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import net.sf.extjwnl.JWNLException;
+import net.sf.extjwnl.data.IndexWord;
+import net.sf.extjwnl.data.POS;
+import net.sf.extjwnl.data.PointerUtils;
+import net.sf.extjwnl.data.list.PointerTargetNodeList;
 import net.sf.extjwnl.dictionary.Dictionary;
 import net.sf.extjwnl.service.IExtjwnlService;
 import net.sf.extjwnl.utilities.Examples;
@@ -21,7 +25,7 @@ import net.sf.extjwnl.utilities.Examples;
 public class DictionaryPart {
 
     private IExtjwnlService extjwnlService;
-    private List<Dictionary> dictionary = new LinkedList<>();
+    private static List<Dictionary> dictionary;
 
     public DictionaryPart() {
     }
@@ -32,9 +36,8 @@ public class DictionaryPart {
     void initUI(BorderPane pane) {
         try
         {
-            TreeItem<String> root = new TreeItem<>("Nouns");
+            TreeItem<String> root = new TreeItem<>("Verbs");
             root.setExpanded(true);
-            root.getChildren().addAll(new TreeItem<>("Word 1"), new TreeItem<>("Word 2"), new TreeItem<>("Word 3"));
             treeView = new TreeView<>(root);
 
             EventHandler<MouseEvent> mouseEventHandle = (MouseEvent event) -> {
@@ -42,6 +45,21 @@ public class DictionaryPart {
             };
 
             treeView.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseEventHandle);
+
+            try
+            {
+                Iterator<IndexWord> iter = dictionary.get(0).getIndexWordIterator(POS.VERB);
+                while (iter.hasNext())
+                {
+                    String str = iter.next().getLemma();
+                    root.getChildren().add(new TreeItem<>(str));
+                }
+            }
+            catch (JWNLException e)
+            {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 
             pane.setCenter(treeView);
         }
@@ -58,8 +76,18 @@ public class DictionaryPart {
         {
             String name = (String)((TreeItem)treeView.getSelectionModel().getSelectedItem()).getValue();
 
-            WordPart wordsChange = WordPart.getWp();
-            wordsChange.initializeTree(name);
+            try
+            {
+                IndexWord word = dictionary.get(0).getIndexWord(POS.VERB, name);
+                PointerTargetNodeList hyponyms = PointerUtils.getDirectHyponyms(word.getSenses().get(0));
+                WordPart wordsChange = WordPart.getWp();
+                wordsChange.initializeTree(name, hyponyms);
+            }
+            catch (JWNLException e)
+            {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
     }
 
