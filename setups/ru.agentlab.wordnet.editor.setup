@@ -88,6 +88,8 @@
       <requirement
           name="com.tngtech.java.junit-dataprovider.source"/>
       <requirement
+          name="org.eclipse.swt.dummyfragments.feature.group"/>
+      <requirement
           name="*"/>
       <sourceLocator
           rootFolder="${ru.agentlab.wordnet.editor.git.clone.location}"
@@ -98,6 +100,8 @@
             url="http://agentlab.ru/p2/orbit/net.sf.extjwnl/"/>
         <repository
             url="http://agentlab.ru/pd/p2/eclipseorbit/"/>
+        <repository
+            url="https://eclipseguru.github.io/missing-swt-fragments/"/>
       </repositoryList>
     </targlet>
   </setupTask>

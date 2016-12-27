@@ -16,4 +16,5 @@
 		<module>ru.agentlab.wordnet.editor.releng</module>
 		<module>ru.agentlab.wordnet.editor.product</module>
 	</modules>
+
 </project>
